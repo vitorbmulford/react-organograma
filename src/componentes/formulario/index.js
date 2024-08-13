@@ -5,15 +5,6 @@ import Botao from "../Botão";
 import { useState } from "react";
 
 const Formulario = (props) => {
-  const times = [
-    "Programação",
-    "Front-end",
-    "Data Science",
-    "Deveops",
-    "UX e Design",
-    "Mobile",
-    "Inovação e Gestão",
-  ];
   const [nome, setNome] = useState("");
   const [cargo, setCargo] = useState("");
   const [imagem, setImagem] = useState("");
@@ -22,11 +13,12 @@ const Formulario = (props) => {
   const aoSalvar = (evento) => {
     evento.preventDefault();
     props.aoColaboradorCadastrado({ nome, cargo, imagem, time });
-    // if(props.aoColaboradorCadastrado = props.aoColaboradorCadastrado){
-    //   alert("Hello! I am an alert box!!");
-    // 
+    setNome("");
+    setCargo("");
+    setImagem("");
+    setTime("");
   };
-  
+
   return (
     <section className="formulario">
       <form onSubmit={aoSalvar}>
@@ -53,7 +45,7 @@ const Formulario = (props) => {
         />
         <ListaSuspensa
           label="Time"
-          itens={times}
+          itens={props.times} // Alterado de props.time para props.times
           value={time}
           aoAlterado={(valor) => setTime(valor)}
         />
